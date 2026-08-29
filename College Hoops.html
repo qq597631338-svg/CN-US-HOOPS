@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大学赛道 (NCAA/NJCAA) | CN-US Hoops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; color: #111827; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <nav class="bg-gray-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 font-black text-2xl tracking-tighter text-red-500">
+                        CN-US HOOPS
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-semibold transition">主页 / 数据库</a>
+                            <a href="#" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-bold border-b-2 border-red-500">大学 (NCAA/NJCAA)</a>
+                            <a href="highschool.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-semibold transition">高中 (HS/Prep)</a>
+                            <a href="rankings.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-semibold transition">历届排名</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="relative">
+                        <input type="text" class="bg-gray-800 text-sm rounded-md pl-10 pr-4 py-1.5 focus:outline-none focus:ring-1 focus:ring-red-500 text-white placeholder-gray-400 border border-gray-700" placeholder="搜索大学球员...">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-blue-900 text-white py-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pattern-dots"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight uppercase mb-4">College Hoops</h1>
+            <p class="text-blue-200 text-lg max-w-2xl mx-auto font-medium">关注活跃在 NCAA D1/D2/D3 及 NJCAA (全美初级学院) 赛场的中国旅美球员。追踪他们的赛季表现与升学动态。</p>
+        </div>
+    </div>
+
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- 左侧：筛选器 -->
+        <aside class="w-full md:w-64 flex-shrink-0">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden sticky top-6">
+                <div class="px-4 py-3 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
+                    <h2 class="text-sm font-bold text-gray-800 uppercase tracking-wider">大学赛道筛选</h2>
+                </div>
+                <div class="p-4 space-y-6">
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">联盟级别</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center text-sm font-medium text-gray-700 cursor-pointer"><input type="checkbox" class="rounded text-red-600 focus:ring-red-500 h-4 w-4 mr-2" checked> NCAA D1</label>
+                            <label class="flex items-center text-sm font-medium text-gray-700 cursor-pointer"><input type="checkbox" class="rounded text-red-600 focus:ring-red-500 h-4 w-4 mr-2" checked> NCAA D2/D3</label>
+                            <label class="flex items-center text-sm font-medium text-gray-700 cursor-pointer"><input type="checkbox" class="rounded text-red-600 focus:ring-red-500 h-4 w-4 mr-2"> NJCAA</label>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">年级</h3>
+                        <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md border">
+                            <option>所有年级</option>
+                            <option>Freshman (大一)</option>
+                            <option>Sophomore (大二)</option>
+                            <option>Junior (大三)</option>
+                            <option>Senior (大四/超龄)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="flex-grow">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-white">
+                    <h1 class="text-xl font-black text-gray-900 tracking-tight">活跃大学球员 (12 人)</h1>
+                </div>
+
+                <div class="divide-y divide-gray-200">
+                    <!-- 大学生 1 -->
+                    <a href="player.html" class="block bg-white hover:bg-gray-50 transition p-4">
+                        <div class="flex items-center">
+                            <div class="relative w-16 h-16 flex-shrink-0 bg-gray-200 rounded overflow-hidden mr-4 border border-gray-300">
+                                <img src="https://placehold.co/100x100/eeeeee/999999?text=Head" class="w-full h-full object-cover" alt="headshot">
+                                <div class="absolute bottom-0 right-0 w-6 h-6 bg-white border border-gray-300 p-0.5 z-10 rounded-tl shadow-sm">
+                                    <img src="https://placehold.co/40x40/ffffff/000000?text=UCLA" class="w-full h-full object-contain" alt="team logo">
+                                </div>
+                            </div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex items-baseline">
+                                    <h2 class="text-lg font-black text-gray-900 truncate">张三 (San Zhang)</h2>
+                                    <span class="ml-2 px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 tracking-wide">NCAA D1</span>
+                                </div>
+                                <div class="text-sm text-gray-600 font-medium mt-0.5">
+                                    SF | 6-8 (203cm) | Freshman
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 flex items-center">
+                                    <span class="font-bold text-gray-700">UCLA Bruins</span>
+                                    <span class="mx-2 text-gray-300">|</span>
+                                    Big Ten Conference
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end text-right ml-4">
+                                <div class="text-xs font-bold text-gray-400 mb-1">本赛季场均</div>
+                                <div class="flex gap-3 text-center mt-1">
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 font-bold uppercase">PTS</div>
+                                        <div class="text-sm font-black text-gray-900">14.5</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 font-bold uppercase">REB</div>
+                                        <div class="text-sm font-black text-gray-900">8.2</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] text-gray-500 font-bold uppercase">AST</div>
+                                        <div class="text-sm font-black text-gray-900">2.1</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- 大学生 2 -->
+                    <div class="block bg-white hover:bg-gray-50 transition p-4 cursor-pointer">
+                        <div class="flex items-center">
+                            <div class="relative w-16 h-16 flex-shrink-0 bg-gray-200 rounded overflow-hidden mr-4 border border-gray-300">
+                                <div class="w-full h-full flex items-center justify-center text-gray-400 font-bold text-xs bg-gray-100">NO PIC</div>
+                            </div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex items-baseline">
+                                    <h2 class="text-lg font-black text-gray-900 truncate">林七 (Qi Lin)</h2>
+                                    <span class="ml-2 px-1.5 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800 tracking-wide">NCAA D2</span>
+                                </div>
+                                <div class="text-sm text-gray-600 font-medium mt-0.5">
+                                    PG | 6-1 (185cm) | Junior
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 flex items-center">
+                                    <span class="font-bold text-gray-700">Chaminade University</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end text-right ml-4">
+                                 <div class="text-xs text-gray-500 italic mt-2">Redshirt (红衫休战)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

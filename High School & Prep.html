@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高中/预备校 (HS/Prep) | CN-US Hoops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; color: #111827; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <nav class="bg-gray-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 font-black text-2xl tracking-tighter text-red-500">
+                        CN-US HOOPS
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-semibold transition">主页 / 数据库</a>
+                            <a href="college.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-semibold transition">大学 (NCAA/NJCAA)</a>
+                            <a href="#" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-bold border-b-2 border-red-500">高中 (HS/Prep)</a>
+                            <a href="rankings.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-semibold transition">历届排名</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-red-900 text-white py-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight uppercase mb-4">High School & Prep</h1>
+            <p class="text-red-200 text-lg max-w-2xl mx-auto font-medium">探索全美各大高中与预备学校的中国新生代力量。了解他们的评级、Offer 以及最新招募动态。</p>
+        </div>
+    </div>
+
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <aside class="w-full md:w-64 flex-shrink-0">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden sticky top-6">
+                <div class="px-4 py-3 border-b border-gray-200 bg-gray-50">
+                    <h2 class="text-sm font-bold text-gray-800 uppercase tracking-wider">高中/预备校筛选</h2>
+                </div>
+                <div class="p-4 space-y-6">
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">毕业届份 (Class)</h3>
+                        <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md border">
+                            <option>所有届份</option>
+                            <option selected>2025</option>
+                            <option>2026</option>
+                            <option>2027+</option>
+                        </select>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">星级评定</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center text-sm font-medium text-gray-700"><input type="checkbox" class="rounded text-red-600 focus:ring-red-500 h-4 w-4 mr-2" checked> 4-Star & 5-Star</label>
+                            <label class="flex items-center text-sm font-medium text-gray-700"><input type="checkbox" class="rounded text-red-600 focus:ring-red-500 h-4 w-4 mr-2" checked> 3-Star</label>
+                            <label class="flex items-center text-sm font-medium text-gray-700"><input type="checkbox" class="rounded text-red-600 focus:ring-red-500 h-4 w-4 mr-2"> Not Ranked (未评级)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="flex-grow">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-200 bg-white">
+                    <h1 class="text-xl font-black text-gray-900 tracking-tight">高中球员数据库 (33 人)</h1>
+                </div>
+
+                <div class="divide-y divide-gray-200">
+                    <!-- 高中生 1 -->
+                    <div class="block bg-white hover:bg-gray-50 transition p-4 cursor-pointer">
+                        <div class="flex items-center">
+                            <div class="relative w-16 h-16 flex-shrink-0 bg-gray-200 rounded overflow-hidden mr-4 border border-gray-300">
+                                <img src="https://placehold.co/100x100/eeeeee/999999?text=Head" class="w-full h-full object-cover" alt="headshot">
+                                <div class="absolute bottom-0 right-0 w-6 h-6 bg-white border border-gray-300 p-0.5 z-10 rounded-tl shadow-sm">
+                                    <img src="https://placehold.co/40x40/ffffff/000000?text=IMG" class="w-full h-full object-contain" alt="team logo">
+                                </div>
+                            </div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex items-baseline">
+                                    <h2 class="text-lg font-black text-gray-900 truncate">李四 (Si Li)</h2>
+                                    <span class="ml-2 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-800 text-white tracking-wide">HIGH SCHOOL</span>
+                                </div>
+                                <div class="text-sm text-gray-600 font-medium mt-0.5">
+                                    PG | 6-2 (188cm) | 175 lbs
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 flex items-center">
+                                    <span class="font-bold text-gray-700">IMG Academy (FL)</span>
+                                    <span class="mx-2 text-gray-300">|</span>
+                                    Class of 2025
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end text-right ml-4">
+                                <div class="flex items-center text-yellow-400 text-lg mb-1" title="综合星级 3.3">
+                                    ★★★<span class="text-gray-300">★★</span>
+                                </div>
+                                <div class="text-xs text-gray-500 font-bold mt-1">Offers: 3 (D1)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 高中生 2 -->
+                    <div class="block bg-white hover:bg-gray-50 transition p-4 cursor-pointer">
+                        <div class="flex items-center">
+                            <div class="relative w-16 h-16 flex-shrink-0 bg-gray-200 rounded overflow-hidden mr-4 border border-gray-300">
+                                <div class="w-full h-full flex items-center justify-center text-gray-400 font-bold text-xs bg-gray-100">NO PIC</div>
+                            </div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex items-baseline">
+                                    <h2 class="text-lg font-black text-gray-900 truncate">王五 (Wu Wang)</h2>
+                                    <span class="ml-2 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-800 text-white tracking-wide">PREP</span>
+                                </div>
+                                <div class="text-sm text-gray-600 font-medium mt-0.5">
+                                    C | 7-1 (216cm) | 240 lbs
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 flex items-center">
+                                    <span class="font-bold text-gray-700">Brewster Academy</span>
+                                    <span class="mx-2 text-gray-300">|</span>
+                                    Class of 2026
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end text-right ml-4">
+                                <div class="text-sm font-bold text-gray-400 mb-1">NR (未评级)</div>
+                                <div class="text-xs text-gray-500 font-bold mt-1">Offers: 0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

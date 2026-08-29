@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张三 (San Zhang) | 球员档案 | CN-US Hoops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* 更浅的背景色，凸显卡片 */
+        }
+
+        .hero-bg {
+            background-color: #111827; /* 深色背景，类似ESPN/On3 */
+            background-image: linear-gradient(to right, #111827, #1f2937);
+        }
+
+        /* 统一表格样式 */
+        .stats-table th {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b7280;
+            background-color: #f9fafb;
+            padding: 0.75rem 1rem;
+            text-align: right; /* 数据默认靠右对齐 */
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .stats-table th:first-child { text-align: left; }
+        
+        .stats-table td {
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            color: #374151;
+            text-align: right;
+            border-bottom: 1px solid #e5e7eb;
+            font-variant-numeric: tabular-nums; /* 等宽数字，表格更整齐 */
+        }
+        .stats-table td:first-child { text-align: left; font-weight: 600; color: #111827; }
+        .stats-table tr:hover { background-color: #f9fafb; }
+        
+        .team-logo-shadow {
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- 极简导航栏 (回退/搜索) -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+            <a href="index.html" class="flex items-center text-sm font-bold text-gray-600 hover:text-red-600 transition">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                返回数据库
+            </a>
+            <div class="font-black text-xl tracking-tighter text-gray-900">CN-US HOOPS</div>
+        </div>
+    </nav>
+
+    <!-- 球员档案头部 (Hero Section) -->
+    <div class="hero-bg text-white border-b-4 border-red-600 pt-8 pb-0 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            
+            <div class="flex flex-col md:flex-row items-end justify-between relative z-10">
+                
+                <!-- 左侧：球员照片与基础信息 -->
+                <div class="flex items-end flex-grow">
+                    <!-- 大号半身像 (去底) -->
+                    <div class="w-48 h-56 mr-6 relative flex-shrink-0 bg-gray-800 rounded-t-lg overflow-hidden border-2 border-b-0 border-gray-700">
+                        <img src="https://placehold.co/200x250/333333/cccccc?text=Player+Cutout" alt="Player" class="w-full h-full object-cover object-top">
+                    </div>
+                    
+                    <!-- 姓名、位置、球队文本 -->
+                    <div class="pb-6">
+                        <div class="flex items-center mb-1">
+                            <span class="px-2 py-0.5 bg-gray-800 text-gray-300 text-[10px] font-bold rounded tracking-widest uppercase border border-gray-700 mr-2">Small Forward</span>
+                            <span class="text-sm font-semibold text-gray-400">Class of 2024</span>
+                        </div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-12 h-12 bg-white rounded-full p-1 border-2 border-gray-800 shadow-md">
+                                <img src="https://placehold.co/100x100/ffffff/000000?text=UCLA" alt="UCLA Logo" class="w-full h-full object-contain rounded-full">
+                            </div>
+                            <h1 class="text-5xl md:text-6xl font-black tracking-tight uppercase">张三</h1>
+                        </div>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-400 mb-4 tracking-wide uppercase">San Zhang</h2>
+                        
+                        <div class="flex items-center text-sm font-medium text-gray-300 divide-x divide-gray-600">
+                            <div class="pr-4 flex items-center">
+                                <svg class="w-4 h-4 mr-1 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"></path></svg>
+                                6-8 (203cm) / 215 lbs
+                            </div>
+                            <div class="px-4 text-white font-bold text-base flex items-center">
+                                UCLA Bruins (NCAA D1)
+                            </div>
+                            <div class="pl-4">辽宁, 中国</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧：媒体评级 (核心数据区域) -->
+                <div class="bg-gray-800 border border-gray-700 rounded-t-lg p-5 w-full md:w-80 pb-8 relative shadow-lg">
+                    <!-- 综合星级 -->
+                    <div class="text-center mb-4 border-b border-gray-700 pb-4">
+                        <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">综合媒体评星 (Composite)</div>
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-4xl font-black text-white">4.0</span>
+                            <span class="text-yellow-400 text-2xl">★★★★<span class="text-gray-600">★</span></span>
+                        </div>
+                    </div>
+                    
+                    <!-- 排名数字 -->
+                    <div class="grid grid-cols-2 gap-4 text-center mb-4">
+                        <div>
+                            <div class="text-[10px] text-gray-400 font-bold uppercase">Natl Rank</div>
+                            <div class="text-2xl font-black text-white">#42</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-gray-400 font-bold uppercase">Pos Rank</div>
+                            <div class="text-2xl font-black text-white">#9</div>
+                        </div>
+                    </div>
+
+                    <!-- 三大媒体明细 -->
+                    <div class="space-y-2 mt-4 text-xs font-medium">
+                        <div class="flex justify-between items-center bg-gray-900 px-3 py-1.5 rounded">
+                            <span class="text-gray-400">247Sports</span>
+                            <div class="flex items-center">
+                                <span class="text-white font-bold mr-2">94 (4★)</span>
+                                <span class="text-gray-500 w-8 text-right">#45</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900 px-3 py-1.5 rounded border-l-2 border-red-500">
+                            <span class="text-gray-400">On3</span>
+                            <div class="flex items-center">
+                                <span class="text-white font-bold mr-2">96 (4★)</span>
+                                <span class="text-gray-500 w-8 text-right">#38</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900 px-3 py-1.5 rounded">
+                            <span class="text-gray-400">ESPN</span>
+                            <div class="flex items-center">
+                                <span class="text-white font-bold mr-2">86 (4★)</span>
+                                <span class="text-gray-500 w-8 text-right">#48</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- 主要数据区 -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
+            <div class="px-6 py-4 border-b border-gray-200 bg-gray-50 flex items-center">
+                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                <h2 class="text-lg font-black text-gray-900 tracking-tight uppercase">数据统计</h2>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full stats-table">
+                    <thead>
+                        <tr>
+                            <th>Season / Team / League</th>
+                            <th>GP</th>
+                            <th>MIN</th>
+                            <th>PTS</th>
+                            <th>REB</th>
+                            <th>AST</th>
+                            <th class="font-bold text-gray-700 bg-gray-100">STL</th> <!-- 新增抢断 -->
+                            <th class="font-bold text-gray-700 bg-gray-100">BLK</th> <!-- 新增盖帽 -->
+                            <th>FG%</th>
+                            <th>3P%</th>
+                            <th>FT%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 2024-25 赛季 (NCAA) -->
+                        <tr>
+                            <td>
+                                <div class="flex items-center">
+                                    <span class="font-bold">2024-25</span>
+                                    <span class="text-gray-400 mx-2">|</span>
+                                    <span>UCLA (NCAA D1)</span>
+                                </div>
+                            </td>
+                            <td>18</td>
+                            <td>28.4</td>
+                            <td class="font-bold text-gray-900">14.5</td>
+                            <td>8.2</td>
+                            <td>2.1</td>
+                            <td class="bg-gray-50 text-gray-900 font-semibold">1.4</td>
+                            <td class="bg-gray-50 text-gray-900 font-semibold">1.1</td>
+                            <td>48.5</td>
+                            <td>34.2</td>
+                            <td>78.0</td>
+                        </tr>
+                        <!-- 2023-24 赛季 (高中) -->
+                        <tr>
+                            <td>
+                                <div class="flex items-center text-gray-600">
+                                    <span class="font-medium">2023-24</span>
+                                    <span class="text-gray-300 mx-2">|</span>
+                                    <span>Montverde Acad. (HS)</span>
+                                </div>
+                            </td>
+                            <td>24</td>
+                            <td>24.5</td>
+                            <td class="font-bold text-gray-700">16.8</td>
+                            <td>7.2</td>
+                            <td>2.5</td>
+                            <td class="bg-gray-50 text-gray-700 font-semibold">1.8</td>
+                            <td class="bg-gray-50 text-gray-700 font-semibold">1.5</td>
+                            <td>52.4</td>
+                            <td>36.8</td>
+                            <td>82.1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
+            <div class="px-6 py-4 border-b border-gray-200 bg-gray-50 flex items-center">
+                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h2 class="text-lg font-black text-gray-900 tracking-tight uppercase">FIBA数据统计</h2>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full stats-table">
+                    <thead>
+                        <tr>
+                            <th>Event / Team</th>
+                            <th>GP</th>
+                            <th>MIN</th>
+                            <th>PTS</th>
+                            <th>REB</th>
+                            <th>AST</th>
+                            <th class="font-bold text-gray-700 bg-gray-100">STL</th>
+                            <th class="font-bold text-gray-700 bg-gray-100">BLK</th>
+                            <th>FG%</th>
+                            <th>3P%</th>
+                            <th>FT%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 国际赛场 -->
+                        <tr>
+                            <td>
+                                <div class="flex items-center text-gray-600">
+                                    <span class="font-medium">2022</span>
+                                    <span class="text-gray-300 mx-2">|</span>
+                                    <span class="flex items-center">
+                                        <img src="https://placehold.co/20x15/ff0000/ffffff?text=CN" alt="China Flag" class="inline-block mr-1 border border-gray-300">
+                                        FIBA U16 Asia
+                                    </span>
+                                </div>
+                            </td>
+                            <td>5</td>
+                            <td>28.0</td>
+                            <td class="font-bold text-gray-700">20.4</td>
+                            <td>9.6</td>
+                            <td>3.0</td>
+                            <td class="bg-gray-50 text-gray-700 font-semibold">2.2</td>
+                            <td class="bg-gray-50 text-gray-700 font-semibold">1.8</td>
+                            <td>55.1</td>
+                            <td>40.0</td>
+                            <td>75.5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
